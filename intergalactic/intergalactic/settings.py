@@ -122,3 +122,9 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Модель пользователя
+AUTH_USER_MODEL = 'authapp.IntergalacticUser'
+
+# Путь до аватарок в папке media
+USERS_AVATARS = 'users_avatars'
