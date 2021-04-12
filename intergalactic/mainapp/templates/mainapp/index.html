@@ -3,6 +3,11 @@
 {% load static %}
 
 {% block main_content %}
+
+{% for like in likes %}
+    You were liked by {{like.sender_id}}
+    <a href="{% url 'main:notification_read' like.pk %}">X</a>
+{% endfor %}
 <div class="main-wrapper">
     <div class="main-wrapper-center">
         <p class="trending">Сейчас в тренде</p>

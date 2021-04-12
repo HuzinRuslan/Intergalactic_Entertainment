@@ -720,3 +720,54 @@ h4 {
     margin-top: 5px;
     margin-bottom: 15px;
 }
+
+.fa-heart {
+    color: red;
+}
+
+.user-avatar{
+    padding: 0 !important;
+    height: 50px !important;
+    width: 50px !important;
+    border-radius: 50%;
+}
+.comments-wrapper{
+    margin: 30px 0 30px 0;
+}
+.comment-grid {
+  display: grid;
+  grid-template-columns: 50px 1.5fr;
+  grid-template-rows: 0.6fr 1.4fr;
+  gap: 0px 25px;
+  grid-template-areas:
+    "avatar username"
+    "avatar comment";
+}
+.user-avatar {
+    grid-area: avatar;
+ }
+.comment-username {
+    grid-area: username;
+}
+.comment-text {
+    grid-area: comment;
+}
+.comment-form{
+    display: flex;
+    align-items: center;
+}
+.comment-input{
+    width: 50%;
+    height: 25px;
+    margin: 0 10px 0 25px;
+    outline: none;
+    padding: 5px 0 5px 10px;
+    font-size: 17px;
+    font-family: sans-serif;
+}
+.likes-comments{
+    margin: 10px 0 0 10px;
+}
+.hide{
+    display: none;
+}

@@ -6,7 +6,7 @@
         <p>{{ publ.short_desc}}</p>
         <h4>{{ publ.created}}</h4>
         <h5>
-            <span class="likes">4</span>
+            <span class="likes">{{ publ.get_like_count }}</span>
             <i class="fas fa-heart"></i>
             <span class="comments">4 </span>
             <i class="fas fa-comments"></i>

@@ -63,24 +63,46 @@
                     </div>
                 </div>
             </div>
-                    <div class="main-last-blocks-container">
-                        <div class="publication">
-                            <h5>{{ publication.user }}</h5>
-                            <h2>{{ publication.name }}</h2>
-                            <h6><a href={% url 'main:category'  publication.category.pk %}>
-                                {{ publication.category}}
-                            <a></a></h6>
-                            <img src="{{ publication.image|media_folder_publications }}" alt="">
-                            <p>{{ publication.text}}</p>
-                                    <h4>{{ publication.created}}</h4>
-                                    <h5>
-                                        <span class="likes">4</span>
-                                        <i class="fas fa-heart"></i>
-                                        <span class="comments">4 </span>
-                                        <i class="fas fa-comments"></i>
-                                    </h5>
+            <div class="main-last-blocks-container">
+                <div class="publication">
+                    <h5>{{ publication.user }}</h5>
+                    <h2>{{ publication.name }}</h2>
+                    <h6><a href="{% url 'main:category'  publication.category.pk %}">
+                        {{ publication.category}}
+                    <a></a></h6>
+                    <img src="{{ publication.image|media_folder_publications }}" alt="">
+                    <p>{{ publication.text}}</p>
+                    <h4>{{ publication.created}}</h4>
+                    <h5 class="likes-comments">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'main:like' publication.id publication.user.id %}"><i class="{% if publication|is_liked:user.id %} fas fa-heart {% else %} far fa-heart {% endif %}" style="font-size:50px;;"></i></a>
+                        {% else %}
+                            <a href="#"><i class="{% if publication|is_liked:user.id %} fas fa-heart {% else %} far fa-heart {% endif %}" style="font-size:30px;"></i></a>
+                        {% endif %}
+                        <span class="likes" style="margin-right:15px; font-size:20px;">{{ publication.get_like_count }}</span>
+                        <span class="comments" onclick="toggle_comments(this)" style="cursor: pointer;"><i class="far fa-comment-alt" style="font-size:30px;"></i> <span class="comments" style="font-size:20px;">{{ publication.get_comment_count }}</span></span>
+                        <div class="comments-wrapper">
+                            <div class="comments-div">
+                            {% for comment in comments %}
+                                <div class="comment-grid">
+                                    <img src="{{ comment.user.avatar|media_folder_users }}" alt="" class="user-avatar">
+                                    <p class="comment-username">{{ comment.user }}</p>
+                                    <p class="comment-text">{{ comment.description }}</p>
+                                </div>
+                                <br>
+                            {% endfor %}
+                            </div>
+                            <form action="{% url 'main:comment' %}" method="post" enctype="multipart/form-data" class="comment-form hide">
+                                {% csrf_token %}
+                                <img src="{{ user.avatar|media_folder_users }}" alt="" class="user-avatar">
+                                <input type="text" name="message" class="comment-input">
+                                <input type="hidden" name='publication_id' value='{{ publication.id }}'>
+                                <button type="submit" value="Submit" class="btn btn-primary"><i class="fas fa-paper-plane" style="font-size:20px;"></i></button>
+                            </form>
                         </div>
-                    <div class="popular-blocks-container">
+                    </h5>
+                </div>
+                <div class="popular-blocks-container">
                 <p>Популярные за неделю</p>
                 <div class="popular-blocks">
                     <div class="last-block pop1"><img src="{% static 'img/space-1280x720.jpg' %}" alt="">
@@ -161,6 +183,3 @@
     </div>
 </div>
 {% endblock %}
-</body>
-
-</html>
