@@ -97,12 +97,23 @@ def publication_page(request, pk):
     likes = Likes.objects.all()
     notifications = get_notifications(request.user)
 
+    now_read_id_list = take_now_read_publication_id_list()
+    now_read_publication_list = [
+        Publication.objects.get(id=now_read_id_list[0]),
+        Publication.objects.get(id=now_read_id_list[1]),
+        Publication.objects.get(id=now_read_id_list[2]),
+        Publication.objects.get(id=now_read_id_list[3]),
+        Publication.objects.get(id=now_read_id_list[4]),
+    ]
+    now_read_publication_list_of_dict = take_publications_list_of_dict(now_read_publication_list)
+
     context = {
         'page_title': 'Publication',
         'categories': categories,
         'publication': get_object_or_404(Publication, pk=pk),
         'comments': comments,
         'likes': likes,
+        'now_read_publication_list_of_dict': now_read_publication_list_of_dict,
         'notifications': notifications,
 
     }
@@ -111,6 +122,16 @@ def publication_page(request, pk):
 
 def category_page(request, pk):
     categories = PublicationCategory.objects.filter(is_active=True)
+
+    now_read_id_list = take_now_read_publication_id_list()
+    now_read_publication_list = [
+        Publication.objects.get(id=now_read_id_list[0]),
+        Publication.objects.get(id=now_read_id_list[1]),
+        Publication.objects.get(id=now_read_id_list[2]),
+        Publication.objects.get(id=now_read_id_list[3]),
+        Publication.objects.get(id=now_read_id_list[4]),
+    ]
+    now_read_publication_list_of_dict = take_publications_list_of_dict(now_read_publication_list)
 
     if pk is not None:
         if pk == 0:
@@ -129,6 +150,7 @@ def category_page(request, pk):
             'categories': categories,
             'title': title,
             'publications': publications,
+            'now_read_publication_list_of_dict': now_read_publication_list_of_dict,
             'notifications': notifications,
 
         }

@@ -11,63 +11,24 @@
 <div class="main-wrapper">
     <div class="main-wrapper-center">
         <div class="main-container">
-            <div class="main-navigation">
-                <ul>
+             <div class="main-navigation">
+                 <!-- <ul>
                     <li> <a href="#" class="active">Статьи</a> </li>
                     <li><a href="#">Новости</a></li>
                     <li><a href="#">Хабы</a></li>
                     <li><a href="#">Авторы</a></li>
                     <li><a href="#">Компании</a></li>
-                </ul>
+                </ul> -->
             </div>
 
             <div class="fast-blocks-container">
-        <p>Быстрые новости</p>
-        <div class="fast-blocks">
-            <div class="fast-block">
-                <a href="#"><img src="{% static 'img/983794168.jpg' %}" alt="" class="fast-block-img"></a>
-                <div class="fast-block-text"><a href="#" class="fast-header">Заголовок статьи</a>
-                    <div class="fast-block-text-bottom"><a href="#" class="fast-name">от Ивана</a>
-                        <p class="fast-info">50 просмотров 3 комментария</p>
-                    </div>
+                <p>СЕЙЧАС ЧИТАЮТ</p>
+                <div class="fast-blocks">
+                    {% for publication_dict in now_read_publication_list_of_dict %}
+                        {% include 'mainapp/includes/inc_now_read_blocks.html' %}
+                    {% endfor %}
                 </div>
             </div>
-            <div class="fast-block">
-                <a href="#"><img
-                        src="{% static 'img/https___cdn.cnn.com_cnnnext_dam_assets_191120053137-03-milky-way-images-australia.jpg' %}"
-                        alt="" class="fast-block-img"></a>
-                <div class="fast-block-text"><a href="#" class="fast-header">Заголовок статьи</a>
-                    <div class="fast-block-text-bottom"><a href="#" class="fast-name">от Ивана</a>
-                        <p class="fast-info">50 просмотров 3 комментария</p>
-                    </div>
-                </div>
-            </div>
-            <div class="fast-block">
-                <a href="#"><img src="{% static 'img/Photo.jpg' %}" alt="" class="fast-block-img"></a>
-                <div class="fast-block-text"><a href="#" class="fast-header">Заголовок статьи</a>
-                    <div class="fast-block-text-bottom"><a href="#" class="fast-name">от Ивана</a>
-                        <p class="fast-info">50 просмотров 3 комментария</p>
-                    </div>
-                </div>
-            </div>
-            <div class="fast-block">
-                <a href="#"><img src="{% static 'img/space-1280x720.jpg' %}" alt="" class="fast-block-img"></a>
-                <div class="fast-block-text"><a href="#" class="fast-header">Заголовок статьи</a>
-                    <div class="fast-block-text-bottom"><a href="#" class="fast-name">от Ивана</a>
-                        <p class="fast-info">50 просмотров 3 комментария</p>
-                    </div>
-                </div>
-            </div>
-            <div class="fast-block">
-                <a href="#"><img src="{% static 'img/983794168.jpg' %}" alt="" class="fast-block-img"></a>
-                <div class="fast-block-text"><a href="#" class="fast-header">Заголовок статьи</a>
-                    <div class="fast-block-text-bottom"><a href="#" class="fast-name">от Ивана</a>
-                        <p class="fast-info">50 просмотров 3 комментария</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="main-last-blocks-container">
         {% for publication in publications %}
@@ -93,85 +54,18 @@
             </div>
         {% endfor %}
 
+        <!-- {% include 'mainapp/includes/inc_popular_blocks.html' %} -->
 
-        <p>Популярные за неделю</p>
-        <div class="popular-blocks">
-            <div class="last-block pop1"><img src="{% static 'img/space-1280x720.jpg' %}" alt="">
-                <div class="last-block-text">
-                    <h2>Заголовок</h2>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                    <h4>31 августа 2018</h4>
-                    <h5><span class="likes">4</span> <i class="fas fa-heart"></i> <span
-                            class="comments">4 </span> <i class="fas fa-comments"></i></h5>
-                    <a href="#"></a>
-                </div>
-            </div>
-            <div class="last-block pop2"><img
-                    src="{% static 'img/https___cdn.cnn.com_cnnnext_dam_assets_191120053137-03-milky-way-images-australia.jpg' %}"
-                    alt="">
-                <div class="last-block-text">
-                    <h2>Заголовок</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi fugit ea, nihil.</p>
-                    <h4>31 августа 2018</h4>
-                    <h5><span class="likes">4</span> <i class="fas fa-heart"></i> <span
-                            class="comments">4 </span> <i class="fas fa-comments"></i></h5>
-                    <a href="#"></a>
-                </div>
-            </div>
-            <div class="last-block pop3"><img src="{% static 'img/Photo.jpg' %}" alt="">
-                <div class="last-block-text">
-                    <h2>Заголовок</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique repellendus, impedit
-                        aspernatur dolorem!</p>
-                    <h4>31 августа 2018</h4>
-                    <h5><span class="likes">4</span> <i class="fas fa-heart"></i> <span
-                            class="comments">4 </span> <i class="fas fa-comments"></i></h5>
-                    <a href="#"></a>
-                </div>
-            </div>
-            <div class="last-block pop4"><img src="{% static 'img/983794168.jpg' %}" alt="">
-                <div class="last-block-text">
-                    <h2>Заголовок</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, at! Iste autem perferendis
-                        fugit delectus sed repellat quisquam.</p>
-                    <h4>31 августа 2018</h4>
-                    <h5><span class="likes">4</span> <i class="fas fa-heart"></i> <span
-                            class="comments">4 </span> <i class="fas fa-comments"></i></h5>
-                    <a href="#"></a>
-                </div>
-            </div>
-            <div class="last-block"><img src="{% static 'img/983794168.jpg' %}" alt="">
-                <div class="last-block-text">
-                    <h2>Заголовок</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, at! Iste autem perferendis
-                        fugit delectus sed repellat quisquam.</p>
-                    <h4>31 августа 2018</h4>
-                    <h5><span class="likes">4</span> <i class="fas fa-heart"></i> <span
-                            class="comments">4 </span> <i class="fas fa-comments"></i></h5>
-                    <a href="#"></a>
-                </div>
-            </div>
-            <div class="last-block"><img src="{% static 'img/983794168.jpg' %}" alt="">
-                <div class="last-block-text">
-                    <h2>Заголовок</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, at! Iste autem perferendis
-                        fugit delectus sed repellat quisquam.</p>
-                    <h4>31 августа 2018</h4>
-                    <h5><span class="likes">4</span> <i class="fas fa-heart"></i> <span
-                            class="comments">4 </span> <i class="fas fa-comments"></i></h5>
-                    <a href="#"></a>
-                </div>
-            </div>
-        </div>
-        <div class="delimiter">
+        <!-- <div class="delimiter">
             <div class="del">
                 <a href="#">Больше</a>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="main-news">
         <p></p>
     </div>
+</div>
 </div>
 </div>
 {% endblock %}
